@@ -27,7 +27,7 @@ export function SubscriptionCard() {
             <p className="font-medium">Нет активной подписки</p>
             <p className="text-xs text-base-content/60">Доступен пробный режим</p>
           </div>
-          <span className="badge badge-outline badge-sm">Free</span>
+          <span className="badge badge-ghost badge-sm font-medium text-base-content/60">Free</span>
         </div>
         <Button size="sm" className="w-fit" onClick={() => setOpen(true)}>Выбрать тариф</Button>
       </CardContent>
