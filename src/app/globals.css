@@ -7,5 +7,20 @@
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
 }
 
+/* Сегмент-контрол в админке: серый трек + белая пилюля активной вкладки */
+.tabs.tabs-boxed {
+  @apply inline-flex gap-1 rounded-xl bg-base-200/70 p-1;
+}
+.tabs.tabs-boxed .tab {
+  @apply rounded-lg text-sm text-base-content/55 h-8;
+  padding: 0 0.9rem;
+}
+.tabs.tabs-boxed .tab:hover:not(.tab-active) {
+  @apply bg-base-100/60;
+}
+.tabs.tabs-boxed .tab-active {
+  @apply bg-base-100 text-primary font-medium shadow-sm;
+}
+
 ::selection { @apply bg-primary text-primary-content; }
 summary::-webkit-details-marker { display: none; }

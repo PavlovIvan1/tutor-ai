@@ -50,7 +50,7 @@ export default function AdminPage() {
           <RefreshCw className={cn("size-4", spinning && "animate-spin")} />
         </button>
       </div>
-      <div role="tablist" className="tabs tabs-bordered mb-6">
+      <div role="tablist" className="tabs tabs-boxed mb-6 w-fit shadow-sm">
         {TABS.map((t) => (
           <button key={t.id} role="tab" onClick={() => setTab(t.id)}
             className={cn("tab", tab === t.id && "tab-active")}>
