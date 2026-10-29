@@ -1,0 +1,35 @@
+# Tutor: приложение + персиствентный volume с SQLite.
+# Менять серверы = docker compose down && up на новой машине с этим же yaml+volume.
+services:
+  tutor:
+    build: .
+    image: tutor-app
+    container_name: tutor
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - YANDEX_CLIENT_ID=${YANDEX_CLIENT_ID:-}
+      - YANDEX_CLIENT_SECRET=${YANDEX_CLIENT_SECRET:-}
+      - APP_URL=${APP_URL:-http://localhost:3000}
+      - TRANSCRIBE_MODEL=${TRANSCRIBE_MODEL:-}
+      - O3_MODEL=${O3_MODEL:-}
+      # лимиты под слабый сервер (1 CPU / 1 GB RAM)
+      - NODE_OPTIONS=--max-old-space-size=768
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1g
+    volumes:
+      - tutor-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/auth/me"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  tutor-data:

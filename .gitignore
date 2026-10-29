@@ -1,0 +1,20 @@
+# зависимости
+node_modules/
+
+# сборка Next.js
+.next/
+out/
+tsconfig.tsbuildinfo
+
+# данные и окружение (секреты и БД не в git!)
+.env
+.env.local
+.env*.local
+
+# runtime-данные
+data/
+backups/
+
+# ОС / редакторы
+.DS_Store
+*.log
