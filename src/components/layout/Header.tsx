@@ -16,6 +16,9 @@ const NAV = [
   { href: "/help", label: "Справка" },
 ];
 
+/** Страницы без хедера (логин-скрин, OAuth-колбэк). */
+const BARE = ["/login", "/auth/yandex"];
+
 export function Header() {
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
@@ -30,6 +33,7 @@ export function Header() {
 
   const showNav = loaded && user;
   const showLogin = loaded && !user && pathname !== "/login";
+  if (BARE.some((p) => pathname.startsWith(p))) return null;
 
   return (
     <header className="navbar sticky top-0 z-40 bg-base-100/95 backdrop-blur min-h-14 h-14 px-4">
