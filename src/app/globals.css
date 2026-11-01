@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Плавность табов админки (daisyUI tabs) */
+.tabs .tab {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+/* Табы в админке: без подложки/треков, активная — мягкая пилюля */
+.tabs.tabs-boxed {
+  @apply inline-flex gap-1 bg-transparent p-0;
+}
+.tabs.tabs-boxed .tab {
+  @apply rounded-lg text-sm text-base-content/55 h-8;
+  padding: 0 0.9rem;
+}
+.tabs.tabs-boxed .tab:hover:not(.tab-active) {
+  @apply bg-base-200/60;
+}
+.tabs.tabs-boxed .tab-active {
+  @apply bg-base-200 text-primary font-medium;
+}
+
+::selection { @apply bg-primary text-primary-content; }
+summary::-webkit-details-marker { display: none; }
